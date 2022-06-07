@@ -1,5 +1,5 @@
 #include <Keypad.h>
-#include <Wire.h>
+#include <Wire.h> 
 #include <LiquidCrystal.h>
 
 LiquidCrystal lcd(13, 12, 11, 10, 9, 8);
@@ -22,16 +22,16 @@ byte rowPins[ROWS] = {7,6,5,4}; //connect to the row pinouts of the keypad
 byte colPins[COLS] = {3,2,1,0}; //connect to the column pinouts of the keypad
 
 //initialize an instance of class NewKeypad
-Keypad customKeypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+Keypad customKeypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS); 
 
 void setup()
 {
 lcd.begin(16, 2);               // start lcd
 for(int i=0;i<=3;i++);
 lcd.setCursor(0,0);
-  lcd.print("Calculator");
+  lcd.print("Calculator by");
   lcd.setCursor(0,1);
-  lcd.print("by Shahmir Ahmed");
+  lcd.print("Momchi and Lubo");
 delay(4000);
 lcd.clear();
 lcd.setCursor(0, 0);
@@ -40,9 +40,8 @@ lcd.setCursor(0, 0);
 
 void loop()
 {
-
   customKey = customKeypad.getKey();
-  switch(customKey)
+  switch(customKey) 
   {
   case '0' ... '9': // This keeps collecting the first value until a operator is pressed "+-*/"
     lcd.setCursor(0,0);
@@ -105,7 +104,7 @@ void loop()
 
 long SecondNumber()
 {
-  while( 1 )
+  while( true )
   {
     customKey = customKeypad.getKey();
     if(customKey >= '0' && customKey <= '9')
@@ -117,5 +116,5 @@ long SecondNumber()
 
     if(customKey == '=') break;  //return second;
   }
- return second;
+ return second; 
 }
